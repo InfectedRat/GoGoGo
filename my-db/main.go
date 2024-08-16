@@ -33,7 +33,7 @@ func GetAccounts() (*Response, error) {
 	url := "https://sandbox-invest-public-api.tinkoff.ru/rest/tinkoff.public.invest.api.contract.v1.UsersService/GetAccounts"
 
 	// Токен для авторизации
-	token := "t.KZN0RKZTqvlYBJxL3fM0EqZbZ6zsIJSSD8H0TGeWnTvcWgsBk0M0fzmX8dW4p_i5GIT7uZclp1TqjXafXtmBOQ"
+	token := ""
 
 	// Создаем пустое тело запроса
 	requestBody, err := json.Marshal(map[string]interface{}{})
