@@ -1,0 +1,10 @@
+@startuml
+
+!include <C4/C4_Component>
+
+scale 1.0
+
+System(system1, "Тестовая система", "Система для теста", "111")
+System(loans_api, "LOANS-API", "API для управления заявками на займы", "222")
+
+@enduml

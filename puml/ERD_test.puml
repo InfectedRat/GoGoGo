@@ -1,0 +1,20 @@
+@startuml
+
+entity "Employee" {
+    *"employee_id" : UUID PK
+    -- 
+    "info_empl_id" : UUID FK
+    "first_name" : varchar2
+    "last_name" : varchar2
+}
+
+entity "Dop_info" {
+    *"dopinfa_info_id" : UUID PK
+    "employee_id" : UUID 
+}
+
+' Relationship
+Employee ||--o{ Dop_info : Содержит
+
+
+@enduml
