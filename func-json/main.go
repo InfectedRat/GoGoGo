@@ -195,6 +195,8 @@ func saveCountries(db *sql.DB, countries []Country) error {
 	return nil
 }
 
+func saveAccounts()
+
 func main() {
 
 	// Подключаемся к базе данных
