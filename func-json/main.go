@@ -43,6 +43,52 @@ type ResponseAccounts struct {
 
 var Token string
 
+func GetAccounts() (*ResponseAccounts, error) {
+	url := "https://sandbox-invest-public-api.tinkoff.ru/rest/tinkoff.public.invest.api.contract.v1.UsersService/GetAccounts"
+
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	Token := os.Getenv("API_TOKEN")
+
+	requestBody, err := json.Marshal(map[string]interface{}{})
+	if err != nil {
+		return nil, fmt.Errorf("ошибка при создании тела запроса %v", err)
+	}
+
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestBody))
+	if err != nil {
+		return nil, fmt.Errorf("ошибка при создании запроса: %v", err)
+	}
+
+	req.Header.Set("Authorization", "Bearer "+Token)
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("accept", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка при получении ответа: %s", err)
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка при чтении ответа: %v", err)
+	}
+
+	var response ResponseAccounts
+	err = json.Unmarshal(body, &response)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка при разборе ответа: %v", err)
+	}
+
+	return &response, nil
+}
+
 // GetCountries выполняет запрос к API для получения списка стран
 func GetCountries() (*ResponseCountry, error) {
 	url := "https://sandbox-invest-public-api.tinkoff.ru/rest/tinkoff.public.invest.api.contract.v1.InstrumentsService/GetCountries"
