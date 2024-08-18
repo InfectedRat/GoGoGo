@@ -21,3 +21,4 @@
 go.work
 func-json/.env
 func-json/internal/config/.env
+.vscode/launch.json
