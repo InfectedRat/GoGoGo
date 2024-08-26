@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	resp, err := http.Get("http://127.0.0.1:5555/get")
+	resp, err := http.Get("http://localhost:5555/get")
 	if err != nil {
 		log.Println(err)
 		return
