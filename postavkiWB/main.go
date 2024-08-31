@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/joho/godotenv"
 	"github.com/olekukonko/tablewriter"
 )
 
@@ -38,8 +39,19 @@ func main() {
 		log.Fatalf("Ошибка создания запроса: %v", err)
 	}
 
-	// Добавляем заголовок Authorization
-	req.Header.Set("Authorization", "")
+	err = godotenv.Load()
+	if err != nil {
+		log.Fatalf("Ошибка загрузки .env файла")
+	}
+
+	// Загружаем токен из переменной окружения
+	token := os.Getenv("API_TOKEN")
+	if token == "" {
+		log.Fatalf("Переменная окружения API_TOKEN не установлена")
+	}
+
+	// Добавляем заголовок Authorization с префиксом Bearer
+	req.Header.Set("Authorization", "Bearer "+token)
 
 	// Выполняем запрос
 	client := &http.Client{}
