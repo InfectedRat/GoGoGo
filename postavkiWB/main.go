@@ -25,7 +25,7 @@ type CoefficientResponse struct {
 
 func main() {
 	// IDs складов, которые нас интересуют
-	warehouseIDs := []int{130744, 117986, 507, 120762, 208277, 206348}
+	warehouseIDs := []int{130744, 117986, 507, 120762, 208277, 206348, 300571}
 
 	// Преобразуем slice в строку через запятую
 	warehouseIDStr := strings.Trim(strings.Replace(fmt.Sprint(warehouseIDs), " ", ",", -1), "[]")
@@ -75,6 +75,10 @@ func main() {
 	// Подготавливаем таблицу для вывода
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"Date", "Coefficient", "WarehouseID", "WarehouseName", "BoxTypeName", "BoxTypeID"})
+
+	// Настройка ширины столбцов
+	table.SetColWidth(60)       // Устанавливает максимальную ширину столбцов
+	table.SetAutoWrapText(true) // Включает автоматический перенос текста
 
 	// Заполняем таблицу данными, фильтруя по BoxTypeName = "Короба"
 	for _, c := range coefficients {
