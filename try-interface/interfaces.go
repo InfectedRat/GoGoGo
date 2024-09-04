@@ -1,3 +1,6 @@
 package main
 
-type Animal interface
+type Animal interface {
+	Move()
+	Speak()
+}
