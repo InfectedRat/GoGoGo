@@ -6,4 +6,11 @@ type Animal interface {
 }
 
 type Cat struct {
+	Name string
 }
+
+type Dog struct {
+	Name string
+}
+
+func 
