@@ -13,4 +13,6 @@ type Dog struct {
 	Name string
 }
 
-func 
+func (c Cat) Move() {
+
+}
