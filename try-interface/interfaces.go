@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type Animal interface {
 	Move()
 	Speak()
@@ -14,5 +16,5 @@ type Dog struct {
 }
 
 func (c Cat) Move() {
-
+	fmt.Println("Кошка по имени %s прыгает", c.Name)
 }
