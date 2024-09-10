@@ -18,3 +18,7 @@ type Dog struct {
 func (c Cat) Move() {
 	fmt.Println("Кошка по имени %s прыгает", c.Name)
 }
+
+func (c Cat) Speak() {
+	fmt.Println("Кошка по имени %s говорит Mewooo", c.Name)
+}
