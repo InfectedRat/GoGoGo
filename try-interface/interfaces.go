@@ -23,4 +23,6 @@ func (c Cat) Speak() {
 	fmt.Println("Кошка по имени %s говорит Mewooo", c.Name)
 }
 
-func (d Dog)
+func (d Dog) Move() {
+	fmt.Println("")
+}
