@@ -26,3 +26,7 @@ func (c Cat) Speak() {
 func (d Dog) Move() {
 	fmt.Println("")
 }
+
+func (d Dog) Speak() {
+	fmt.Println("")
+}
