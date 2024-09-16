@@ -6,3 +6,11 @@ public class Calc {
         
     }
 }
+
+System.out.print("Введите ваш возраст: ");
+int age = scanner.nextInt();
+
+scanner.nextLine(); // Очистка буфера
+
+System.out.print("Введите ваше имя: ");
+String name = scanner.nextLine();
